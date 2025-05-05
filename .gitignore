@@ -1,0 +1,5 @@
+.env
+.env.compose
+chroma_data
+chroma_data/chroma.sqlite3
+/dev

@@ -1,0 +1,38 @@
+services:
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:latest
+    environment:
+      CHROMA_SERVER_BIND_ADDRESS: "0.0.0.0:8000"
+      CHROMA_DB_IMPL: "duckdb+parquet"
+      CHROMA_DB_DIR: "/data"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma_data:/data
+
+  festivalbot-api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    image: festivalbot-api-dev:latest
+    container_name: festivalbot-api
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env.compose
+    volumes:
+      - ./chroma_data:/app/chroma_data
+      - ./core:/app/core
+    restart: unless-stopped
+  embedder:
+    build:
+      context: ./core
+      dockerfile: Dockerfile
+    container_name: embedder
+    env_file:
+      - .env.compose
+    volumes:
+      - ./chroma_data:/embedding/chroma_data
+      - ./core:/app/core
+    command: python embedding.py
+    restart: "no"
