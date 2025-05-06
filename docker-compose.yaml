@@ -24,6 +24,7 @@ services:
       - ./chroma_data:/app/chroma_data
       - ./core:/app/core
     restart: unless-stopped
+
   embedder:
     build:
       context: ./core
