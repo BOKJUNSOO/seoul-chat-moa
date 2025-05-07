@@ -40,8 +40,6 @@ def build_meta_filter(parsed: dict):
     filters = []
     for k in ("station", "gu"):
         if parsed.get(k):
-            if parsed[k] == "친구" or parsed[k] == "여자친구":
-                continue
             filters.append({k: parsed[k]})
     
     if parsed.get("keywords"):

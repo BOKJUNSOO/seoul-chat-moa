@@ -24,26 +24,13 @@ from langchain.prompts import (
 )
 from langchain.chains.summarize import load_summarize_chain
 
-import re
 from langchain.schema import BaseRetriever, Document
 from starlette.concurrency import run_in_threadpool
-from pprint import pprint
 
 # --- 환경 설정 ---
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 df = pd.read_csv("/app/core/event_.csv", dtype={"event_id": str})
-location_list = df['location'].unique().tolist()
 
-category_list = df['category_name'].dropna().unique().tolist()
-category_list = sorted(category_list, key=len, reverse=True)
-
-station_list = df['station'].unique().tolist()
-gu_list = df['gu'].unique().tolist()
-
-# os.environ["LANGSMITH_TRACING"] = "true"
-# os.environ["LANGSMITH_ENDPOINT"] = "https://api.smith.langchain.com"
-# os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
-# os.environ["LANGSMITH_PROJECT"] = os.getenv("LANGSMITH_PROJECT")
 
 if not OPENAI_API_KEY:
     raise RuntimeError("Environment variable OPENAI_API_KEY is required")

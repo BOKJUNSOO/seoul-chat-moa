@@ -159,6 +159,7 @@ if __name__=='__main__':
     expanded_df = expand_category(df)
     expanded_df.category_name.unique()
     expanded_df['category_name'] = expanded_df['category_name'].replace({'미술':'미술전시','전시':'미술전시'})
+    expanded_df = expanded_df.drop_duplicates(subset='event_id', keep='first')
 
     # 데이터프레임을 문서 리스트로 변환하며 텍스트 분할
     documents = []
