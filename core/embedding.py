@@ -50,7 +50,7 @@ if __name__=='__main__':
     # connect to data base
     conn_params = {
         "host": "host.docker.internal",
-        "port": 15432,
+        "port": 5432,
         "dbname": "seoulmoa",
         "user": "airflow",
         "password": "airflow"
