@@ -160,6 +160,12 @@ if __name__=='__main__':
     expanded_df['category_name'] = expanded_df['category_name'].replace({'미술':'미술전시','전시':'미술전시'})
     expanded_df = expanded_df.drop_duplicates(subset='event_id', keep='first')
 
+    expanded_df['is_fee_str'] = expanded_df['is_free'].map({True: "무료", False: "유료"})
+    expanded_df = expanded_df.drop(columns = 'is_free')
+    expanded_df = expanded_df.rename(columns={
+        'is_fee_str':'is_free'
+    })
+
     # 데이터프레임을 문서 리스트로 변환하며 텍스트 분할
     documents = []
     for _, row in expanded_df.iterrows():
@@ -193,7 +199,8 @@ if __name__=='__main__':
                         "station":row["station"],
                         "start_date": str(row["start_date"].date()),
                         "end_date": str(row["end_date"].date()),
-                        "event_description":row["event_description"]
+                        "event_description":row["event_description"],
+                        "is_free" : str(row['is_free'])
                     }
                 )
             )
