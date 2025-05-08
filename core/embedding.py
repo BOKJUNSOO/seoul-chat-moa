@@ -150,7 +150,6 @@ if __name__=='__main__':
     events['location'] = events['location'] + "-" + events['sub']
     events = events[["event_id","title","is_free","category_name","gu","location","start_date","end_date","target_user","event_description","station"]]
     
-    events.to_csv("./event_.csv")
     # now embedding task
     df = events
     df['start_date'] = pd.to_datetime(df['start_date'])
@@ -173,7 +172,8 @@ if __name__=='__main__':
             "start_date": row["start_date"].strftime("%Y-%m-%d"),
             "end_date": row["end_date"].strftime("%Y-%m-%d"),
             "target_user": row["target_user"],
-            "station":row["station"]
+            "station":row["station"],
+            "event_description":row['event_description']
         }
 
         text = json.dumps(payload, ensure_ascii=False)
@@ -192,7 +192,8 @@ if __name__=='__main__':
                         "gu": row["gu"],
                         "station":row["station"],
                         "start_date": str(row["start_date"].date()),
-                        "end_date": str(row["end_date"].date())
+                        "end_date": str(row["end_date"].date()),
+                        "event_description":row["event_description"]
                     }
                 )
             )

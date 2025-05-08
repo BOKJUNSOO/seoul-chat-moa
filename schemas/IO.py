@@ -17,9 +17,6 @@ class Event(BaseModel):
     location: Location
     startDate: date = Field(..., alias="start_date")
     endDate: date = Field(..., alias="end_date")
-    description_summary: Optional[str]
-    likeCount: int
-    isLiked: bool
 
 class Meta(BaseModel):
     queryDate: date
