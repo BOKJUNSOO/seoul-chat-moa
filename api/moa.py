@@ -29,7 +29,6 @@ from starlette.concurrency import run_in_threadpool
 
 # --- 환경 설정 ---
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-df = pd.read_csv("/app/core/event_.csv", dtype={"event_id": str})
 
 
 if not OPENAI_API_KEY:
@@ -171,8 +170,6 @@ class MetadataFirstRetriever(BaseRetriever):
         return docs
 
 
-
-
 # catch vector
 embedding = OpenAIEmbeddings()
 
@@ -194,14 +191,6 @@ def make_qa_chain(retriever):
     )
 
 # description 요약용 질의 체인
-summarizer_llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k", temperature=0)
-
-summarize_chain = load_summarize_chain(
-    summarizer_llm,
-    chain_type="refine",
-    question_prompt=custom_summarize_prompt,
-    verbose=False
-)
 
 # end point
 @app.post("/api/events", response_model=APIResponse)
@@ -225,12 +214,6 @@ async def get_events(req: ChatRequest):
 
     source_docs = response["source_documents"]
 
-    def fetch_description(event_id: str) -> str:
-        row = df.loc[df["event_id"].astype(str) == event_id]
-        if row.empty:
-            return "설명 정보 없음"
-        return row["event_description"].iloc[0]
-
     events = []
     today = date.today().isoformat()
     for doc in source_docs:
@@ -241,10 +224,7 @@ async def get_events(req: ChatRequest):
         if "event_id" not in doc.metadata:
             print(f"[Warning] No event_id in metadata: {doc.metadata}")
             continue
-        
-        full_desc = fetch_description(doc.metadata["event_id"])
-        docs = [Document(page_content=full_desc)]
-        summary = summarize_chain.run(docs)
+
         m = doc.metadata
         base ={
         "event_id": str(m.get("event_id")),
@@ -256,13 +236,9 @@ async def get_events(req: ChatRequest):
             "station":m.get("station","알 수 없음")
         },
         "start_date": m.get("start_date", today),
-        "end_date": m.get("end_date", today),
-        "description_summary":summary,
+        "end_date": m.get("end_date", today)
         }
 
-        extra = fetch_additional_data(base['event_id'],req.member_id)
-
-        base.update(extra)
         events.append(base)
 
     response_payload = {

@@ -63,57 +63,57 @@ conn_params = {
     }
 
 
-def fetch_additional_data(event_id: int,id:int) -> dict:
-    """
-    event_id를 기반으로 다른 DB에서 가져올 칼럼을 쿼리합니다.
-    예) organizer, price, tickets_available 등
-    """
-    try:
-        # connect
-        conn = psycopg2.connect(**conn_params)
-        cur = conn.cursor()
+# def fetch_additional_data(event_id: int,id:int) -> dict:
+#     """
+#     event_id를 기반으로 다른 DB에서 가져올 칼럼을 쿼리합니다.
+#     예) organizer, price, tickets_available 등
+#     """
+#     try:
+#         # connect
+#         conn = psycopg2.connect(**conn_params)
+#         cur = conn.cursor()
 
-        # search db
-        cur.execute("SELECT current_database(), current_schema();")
-        #db, schema = cur.fetchone()
+#         # search db
+#         cur.execute("SELECT current_database(), current_schema();")
+#         #db, schema = cur.fetchone()
 
-        # schema list
-        cur.execute("SELECT schema_name FROM information_schema.schemata;")
-        #schemata = [row[0] for row in cur.fetchall()]
+#         # schema list
+#         cur.execute("SELECT schema_name FROM information_schema.schemata;")
+#         #schemata = [row[0] for row in cur.fetchall()]
 
-        # st search_path
-        cur.execute("SET search_path TO datawarehouse;")
+#         # st search_path
+#         cur.execute("SET search_path TO datawarehouse;")
 
-        # search table
-        cur.execute("""
-          SELECT table_name
-          FROM information_schema.tables
-          WHERE table_schema = 'datawarehouse';
-        """)
+#         # search table
+#         cur.execute("""
+#           SELECT table_name
+#           FROM information_schema.tables
+#           WHERE table_schema = 'datawarehouse';
+#         """)
 
-        # read member_event
-        member_event = pd.read_sql_query("""SELECT count(*) AS cnt FROM "member_event" WHERE event_id = %s""",
-                                         conn,
-                                         params=[event_id])
-        likeCount = member_event.iloc[0,0]
+#         # read member_event
+#         member_event = pd.read_sql_query("""SELECT count(*) AS cnt FROM "member_event" WHERE event_id = %s""",
+#                                          conn,
+#                                          params=[event_id])
+#         likeCount = member_event.iloc[0,0]
 
-        member_if = pd.read_sql_query("""SELECT 1 FROM "member_event" where event_id =%s AND member_id=%s""",
-                                      conn,
-                                      params=[event_id,id])
+#         member_if = pd.read_sql_query("""SELECT 1 FROM "member_event" where event_id =%s AND member_id=%s""",
+#                                       conn,
+#                                       params=[event_id,id])
 
-        isLiked: bool = not member_if.empty
+#         isLiked: bool = not member_if.empty
     
-    except psycopg2.Error as e:
-        print(e)
-        raise
-    finally:
-        if 'cur' in locals():
-            cur.close()
-        if 'conn' in locals():
-            conn.close()
+#     except psycopg2.Error as e:
+#         print(e)
+#         raise
+#     finally:
+#         if 'cur' in locals():
+#             cur.close()
+#         if 'conn' in locals():
+#             conn.close()
 
-    # 반환 형태 예시
-    return {
-        "likeCount":likeCount,
-        "isLiked":isLiked
-    }
+#     # 반환 형태 예시
+#     return {
+#         "likeCount":likeCount,
+#         "isLiked":isLiked
+#     }

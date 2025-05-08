@@ -17,9 +17,6 @@ class Event(BaseModel):
     location: Location
     startDate: date = Field(..., alias="start_date")
     endDate: date = Field(..., alias="end_date")
-    description_summary: Optional[str]
-    likeCount: int
-    isLiked: bool
 
 class Meta(BaseModel):
     queryDate: date
@@ -37,4 +34,3 @@ class APIResponse(BaseModel):
 class ChatRequest(BaseModel):
     prompt: str = Field(..., description="사용자 입력 프롬프트")
     limit: int = Field(2, ge=1, le=10, description="가져올 행사 개수")
-    member_id: int =Field(description="사용자 아이디")
