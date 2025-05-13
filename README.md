@@ -15,6 +15,8 @@
 ## 🔎 주요 기능 소개
 
 
+<br>
+
 ### 🎯 위치 기반 검색 기능 및 행사 카테고리별 추천 기능
 사용자 입력에 대하여 특정 행정구역, 지하철역, 카테고리 키워드를 파싱한후 적절한 행사 정보를 제공합니다.
 
@@ -32,6 +34,7 @@
 </div>
 
 
+<br>
 
 ### 🎯 사용자 입력에 대한 응답과 공감
 
@@ -52,6 +55,8 @@
     </table>
 </div>
 
+<br>
+
 ## ⚒️ 기술 스택
 
 | 분류 | 기술 |
@@ -60,6 +65,8 @@
 | 사용 라이브러리 |  <img src="https://img.shields.io/badge/openai-412991?style=flat-square&logo=openai&logoColor=white"> <img src="https://img.shields.io/badge/langchain--community-000000?style=flat-square&logo=LangChain&logoColor=white">  <img src="https://img.shields.io/badge/psycopg2-2c5d85?style=flat-square&logo=postgresql&logoColor=white"> <img src="https://img.shields.io/badge/sqlalchemy-336791?style=flat-square&logo=SQLAlchemy&logoColor=white"> <img src="https://img.shields.io/badge/geopy-000000?style=flat-square&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/tiktoken-000000?style=flat-square&logo=python&logoColor=white"> |
 | 백엔드 | <img src="https://img.shields.io/badge/fastapi-009688?style=flat-square&logo=fastapi&logoColor=white"> <img src="https://img.shields.io/badge/uvicorn-222222?style=flat-square&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/ChromaDB-20232a?style=flat-square&logo=chroma&logoColor=white">|
 | 배포 | <img src= "https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"> <img src= "https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"> |
+
+<br>
 
 ## 🏆 Seoul-moa 팀원 깃허브
 
@@ -91,6 +98,8 @@
   </tr>
 </table>
 
+<br>
+
 ## 🎈 Project repo
 
 [프론트엔드 서버 레포는 여기!](https://github.com/Hwanjin-Choi/project-seoul-moa-frontend)
@@ -121,6 +130,8 @@
 [작성중..](https://velog.io/@junsoobok/posts)
 
 
+<br>
+
 ## 😎 프로젝트 실행
 
 ### port info
@@ -134,6 +145,8 @@ Chroma DB : 8000
 git clone https://github.com/BOKJUNSOO/seoul-chat-moa
 docker compose up --build -d
 ```
+
+<br>
 
 ## 😎 프로젝트 사용시 설정사항
 
