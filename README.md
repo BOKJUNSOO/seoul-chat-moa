@@ -18,20 +18,17 @@
 ### 🎯 위치 기반 검색 기능 및 행사 카테고리별 추천 기능
 사용자 입력에 대하여 특정 행정구역, 지하철역, 카테고리 키워드를 파싱한후 적절한 행사 정보를 제공합니다.
 
-<div style="display: flex; gap: 1rem; justify-content: center;">
-  <figure style="margin: 0; text-align: center;">
-    <img height="400" src="https://github.com/user-attachments/assets/56e9cb9b-01d3-4274-a56a-013dc9ac9b49">
-    <figcaption style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
-      사용자가 입력한 '왕십리역'과 '콘서트' 대한 질의
-    </figcaption>
-  </figure>
-  <figure style="margin: 0; text-align: center;">
-    <img height="400" 
-    src="https://github.com/user-attachments/assets/2b247d54-3e67-40c9-b199-a5f68547e20c">
-    <figcaption style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
-      실제 챗봇이 찾아온 행사 정보
-    </figcaption>
-  </figure>
+<div align="center">
+    <table>
+        <tr>
+            <td align="center"> <img
+                    src="https://github.com/user-attachments/assets/56e9cb9b-01d3-4274-a56a-013dc9ac9b49"
+                    height="400" /><br /> <sub>사용자가 입력한 '왕십리역'과 '콘서트'에 대한 질의</sub> </td>
+            <td align="center"> <img
+                    src="https://github.com/user-attachments/assets/2b247d54-3e67-40c9-b199-a5f68547e20c"
+                    height="400" /><br /> <sub>실제 챗봇이 찾아온 행사 정보</sub> </td>
+        </tr>
+    </table>
 </div>
 
 
@@ -42,24 +39,17 @@
 
 특정 카테고리를 검색하는 것에는 실패했을지라도 임베딩된 DB에서 데이터를 무조건적으로 검색해옵니다.
 
-<div style="display: flex; gap: 1rem; justify-content: center;">
-  <!-- 🎯 사용자 입력에 대한 응답 -->
-  <figure style="margin: 0; text-align: center;">
-    <img height="400"
-      src="https://github.com/user-attachments/assets/a71b5bed-9616-49e2-baf0-5f1dca38580d"
-      style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
-      '바이올린'이라는 사용자 입력에 대한 응답 예시
-    </figcaption>
-  </figure>
-  <figure style="margin: 0; text-align: center;">
-    <img height="400"
-      src="https://github.com/user-attachments/assets/2dd00a21-ee12-487f-b4cc-73e42599af8d"
-      style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-    <figcaption style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
-      행사정보와 무관한 요청을 보냈을때
-    </figcaption>
-  </figure>
+<div align="center">
+    <table>
+        <tr>
+            <td align="center"> <img
+                    src="https://github.com/user-attachments/assets/a71b5bed-9616-49e2-baf0-5f1dca38580d"
+                    height="400" /><br /> <sub>'바이올린'이라는 사용자 입력에 대한 응답 예시</sub> </td>
+            <td align="center"> <img
+                    src="https://github.com/user-attachments/assets/2dd00a21-ee12-487f-b4cc-73e42599af8d"
+                    height="400" /><br /> <sub>행사정보와 무관한 요청을 보냈을 때</sub> </td>
+        </tr>
+    </table>
 </div>
 
 ## ⚒️ 기술 스택
