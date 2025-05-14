@@ -122,17 +122,13 @@
 세부적인 내용은 아래 링크의 velog 링크에서 확인할 수 있습니다!
 ```
 
-1. RAG에서 Retrieval 전략 `코드레벨`\
-[작성중..](https://velog.io/@junsoobok/posts)
-- 데이터 노이즈
+
+[chat-moa 개발 과정](https://velog.io/@junsoobok/chat-moa-Retrieval)에는 아래의 내용들이 포함되어 있습니다!
+
+- 챗봇 서버를 위한 프레임워크 선택
 - 사용자 입력의 예측
-
-2. embedding! `코드 레벨`\
-[작성중..](https://velog.io/@junsoobok/posts)
-
-3. FastAPI`(인프라레벨)`\
-[작성중..](https://velog.io/@junsoobok/posts)
-
+- 데이터 노이즈 해결과 임베딩
+- API 응답속도
 
 <br>
 
