@@ -4,18 +4,22 @@
    <h3> Langchain Application with FastAPI</h3>
 </div>
 
+<img src='https://github.com/user-attachments/assets/fe7383a0-ec0c-4cd2-a159-498939cc77ef'>
+
+<br>
+
 ## 📢 프로젝트 소개
 
 `#FastAPI` `#LangChain` `#ChatBot` `#Embedding` `#RAG`
 
 서울모아의 데이터 파이프라인으로 부터 수집된 행사정보를 이용하여 파인튜닝한 챗봇입니다.<br>
 
+사용자 입력을 분석하고 적절한 행사를 추천해주는 기능을 가지고 있습니다.
 
+<br>
 
 ## 🔎 주요 기능 소개
 
-
-<br>
 
 ### 🎯 위치 기반 검색 기능 및 행사 카테고리별 추천 기능
 사용자 입력에 대하여 특정 행정구역, 지하철역, 카테고리 키워드를 파싱한후 적절한 행사 정보를 제공합니다.
